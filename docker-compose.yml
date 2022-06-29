@@ -1,4 +1,4 @@
-version: "3.2"
+version: "3.8"
 
 services:
 #MariaDB Container
@@ -17,12 +17,13 @@ services:
     image: diouxx/glpi
     container_name : glpi
     hostname: glpi
+    environment:
+      - TIMEZONE=America/Sao_Paulo
+      - VERSION_GLPI=10.0.2
     ports:
       - "80:80"
     volumes:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
       - /var/www/html/glpi/:/var/www/html/glpi
-    environment:
-      - TIMEZONE=Europe/Brussels
     restart: always
